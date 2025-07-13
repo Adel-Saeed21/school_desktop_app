@@ -21,14 +21,18 @@ return new Promise(resolve=>{
 //       console.log(`CPU Usage: ${(percentage * 100).toFixed(2)}%`);
 //     });
 }
-export function getStaticData(){
-    const totlaStorage=getStorageData().total;
-    const CpuModel=os.cpus()[0].model;
-    const totalMemoryGB=Math.floor(osUtils.totalmem()/1024);
-    return{
-        totlaStorage, totalMemoryGB,CpuModel
-    }
+export function getStaticData(): StaticData {
+  const totalStorage = getStorageData().total;
+  const cpuModel = os.cpus()[0].model;
+  const totalMemoryGB = Math.floor(osUtils.totalmem() / 1024);
+
+  return {
+    totalStorage,
+    totalMemoryGB,
+    cpuModel
+  };
 }
+
 
 function getRamUsage(){
     return 1- osUtils.freememPercentage();
