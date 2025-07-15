@@ -1,8 +1,7 @@
 import { app ,BrowserWindow, ipcMain} from "electron";
-import path from "path";
 import { ipcHandle, isDev } from "./util.js";
 import { getStaticData, pollResources } from "./resourceManger.js";
-import { getPreloadPath } from "./pathResolver.js";
+import { getPreloadPath, getUIPath } from "./pathResolver.js";
 
 app.on("ready",()=>{
     const mainWindow=new BrowserWindow({
@@ -15,7 +14,7 @@ app.on("ready",()=>{
 
     }else{
 
-    mainWindow.loadFile(path.join( app.getAppPath(),"/dist-react/index.html"));
+    mainWindow.loadFile(getUIPath());
 
     }
 
